@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dodge the Blocks</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="game-container">
+        <h1>🎮 Dodge the Blocks</h1>
+
+        <div class="score-board">
+            Score: <span id="score">0</span>
+        </div>
+
+        <canvas id="gameCanvas" width="600" height="500"></canvas>
+
+        <p class="instructions">
+            Use <b>←</b> and <b>→</b> to move
+        </p>
+
+        <button id="restartBtn">Restart Game</button>
+
+        <p id="gameMessage"></p>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
