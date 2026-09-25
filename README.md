@@ -6,8 +6,6 @@ The goal is simple: **move the player and dodge the falling blocks for as long a
 
 ## 🎮 Live Demo
 
-## 🎮 Live Demo
-
 Play the game here:
 
 https://dodge-the-blocks-phi.vercel.app
