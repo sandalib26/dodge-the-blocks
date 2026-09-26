@@ -1,6 +1,6 @@
 # 🎮 Dodge the Blocks — Enhanced Edition
 
-A browser-based endless dodger built with **HTML, CSS Canvas and vanilla JavaScript** — no frameworks, no build step. Deploys to Vercel through a GitHub Actions CI/CD pipeline.
+A browser-based endless dodger built with **HTML, CSS Canvas and vanilla JavaScript** — no frameworks, no build step. Deployed as a static website on Vercel, with GitHub Actions used for continuous integration (CI).
 
 **Live:** https://dodge-the-blocks-phi.vercel.app
 
@@ -94,3 +94,4 @@ When running locally, the footer says **"Running locally"** — build info is on
 * 🧑‍🤝‍🧑 Local 2-player mode
 * 🗺️ Boss obstacle every 10 levels
 * 🌗 Light/dark theme switch
+
