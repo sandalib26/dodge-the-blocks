@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>🎮Dodge the Blocks</title>
+    <title>🎮 Dodge the Blocks</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%AE%3C/text%3E%3C/svg%3E">
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -17,10 +17,10 @@
 
         <section class="hero">
 
-            <h1>Dodge the Blocks</h1>
+            <h1>Dodge the Blocks <span class="badge">v3</span></h1>
 
             <p class="subtitle">
-                Move left and right, dodge the falling blocks, beat your high score.
+                Move left and right, dodge the falling blocks, grab power-ups, chain close calls, beat your high score.
             </p>
 
             <div class="scores">
@@ -35,13 +35,26 @@
                     <strong id="bestScore">00000</strong>
                 </div>
 
+                <div>
+                    <span>LEVEL</span>
+                    <strong id="level">1</strong>
+                </div>
+
+                <div>
+                    <span>LIVES</span>
+                    <strong id="lives">❤❤❤</strong>
+                </div>
+
             </div>
 
-            <canvas
-                id="gameCanvas"
-                width="600"
-                height="500">
-            </canvas>
+            <div class="canvas-wrap">
+                <canvas
+                    id="gameCanvas"
+                    width="600"
+                    height="500">
+                </canvas>
+                <div id="statusBar" class="status-bar"></div>
+            </div>
 
             <div class="controls">
 
@@ -53,6 +66,8 @@
 
                 <button id="rightBtn">→</button>
 
+                <button id="muteBtn" aria-label="Mute">🔊</button>
+
             </div>
 
             <p id="gameMessage">
@@ -60,8 +75,16 @@
             </p>
 
             <p class="help">
-                ← move left · → move right · tap buttons on mobile
+                ← move left · → move right · P to pause · tap / drag on mobile
             </p>
+
+            <div class="legend">
+                <span><i class="dot" style="background:#facc15"></i>🛡 Shield</span>
+                <span><i class="dot" style="background:#22d3ee"></i>⏱ Slow-mo</span>
+                <span><i class="dot" style="background:#c084fc"></i>x2 Score</span>
+                <span><i class="dot" style="background:#f472b6"></i>❤ Life</span>
+                <span><i class="dot" style="background:#38bdf8"></i>😎 Near-miss bonus</span>
+            </div>
 
         </section>
 
@@ -88,9 +111,9 @@
                 <div class="arrow">→</div>
 
                 <div class="step">
-                    <span class="icon">⚙️</span>
-                    <strong>Actions</strong>
-                    <small>Validate</small>
+                    <span class="icon">✅</span>
+                    <strong>Validate</strong>
+                    <small>Lint + syntax</small>
                 </div>
 
                 <div class="arrow">→</div>
@@ -112,11 +135,11 @@
             </div>
 
             <div class="deployment">
-                <span>Deployed by GitHub Actions</span>
-                <span>•</span>
-                <span>main</span>
-                <span>•</span>
-                <span>Vercel</span>
+                <span id="deployStatus">🖥️ Running locally</span>
+                <span>·</span>
+                <span id="deployCommit">no commit info</span>
+                <span>·</span>
+                <span id="deployTime"></span>
             </div>
 
         </section>
@@ -124,8 +147,53 @@
     </main>
 
     <script src="game.js"></script>
+    <script>
+        // Filled in by the CI/CD pipeline (.github/workflows/deploy.yml).
+        // Locally, these stay as placeholders so the footer says "Running locally".
+        const BUILD_COMMIT = "__COMMIT_SHA__";
+        const BUILD_TIME = "__BUILD_TIME__";
+        const BUILD_REPO = "__REPO__";
+        const BUILD_RUN_URL = "__RUN_URL__";
+
+        (function stampFooter() {
+            const commitEl = document.getElementById("deployCommit");
+            const timeEl = document.getElementById("deployTime");
+            const statusEl = document.getElementById("deployStatus");
+
+            const isStamped = !BUILD_COMMIT.startsWith("__");
+
+            if (!isStamped) {
+                statusEl.textContent = "🖥️ Running locally";
+                commitEl.textContent = "no build info";
+                timeEl.textContent = "";
+                return;
+            }
+
+            statusEl.textContent = "🚀 Deployed by GitHub Actions";
+            statusEl.setAttribute("data-commit", BUILD_COMMIT);
+
+            const short = BUILD_COMMIT.slice(0, 7);
+            const link = document.createElement("a");
+            link.href = `https://github.com/${BUILD_REPO}/commit/${BUILD_COMMIT}`;
+            link.textContent = `commit ${short}`;
+            link.style.color = "inherit";
+            commitEl.textContent = "";
+            commitEl.appendChild(link);
+
+            if (BUILD_RUN_URL && !BUILD_RUN_URL.startsWith("__")) {
+                const sep = document.createTextNode(" · ");
+                const runLink = document.createElement("a");
+                runLink.href = BUILD_RUN_URL;
+                runLink.textContent = "view pipeline run";
+                runLink.style.color = "inherit";
+                commitEl.appendChild(sep);
+                commitEl.appendChild(runLink);
+            }
+
+            timeEl.textContent = BUILD_TIME;
+        })();
+    </script>
 
 </body>
 
 </html>
-
