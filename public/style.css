@@ -5,51 +5,245 @@
 body {
     margin: 0;
     min-height: 100vh;
+
     display: flex;
     justify-content: center;
-    align-items: center;
+
     font-family: Arial, sans-serif;
-    background: #111827;
+
+    background: #0b0f14;
     color: white;
 }
 
-.game-container {
+.page {
+    width: min(900px, 92%);
+    padding: 40px 0;
+}
+
+/* Game */
+
+.hero {
     text-align: center;
 }
 
 h1 {
-    margin-bottom: 10px;
+    margin: 0;
+
+    font-size: 48px;
+    letter-spacing: -2px;
 }
 
-.score-board {
-    font-size: 24px;
+.subtitle {
+    margin: 12px 0 25px;
+
+    color: #8b949e;
+    font-size: 16px;
+}
+
+/* Score */
+
+.scores {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+
     margin-bottom: 15px;
 }
 
+.scores div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.scores span {
+    color: #8b949e;
+
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.scores strong {
+    font-family: monospace;
+    font-size: 24px;
+}
+
+/* Canvas */
+
 canvas {
     display: block;
-    background: #1f2937;
-    border: 3px solid white;
-    border-radius: 10px;
+
+    width: min(450px, 100%);
+    height: auto;
+
+    margin: 0 auto;
+
+    background: #11161d;
+
+    border: 2px solid #303842;
+    border-radius: 8px;
 }
 
-.instructions {
-    font-size: 16px;
+/* Controls */
+
+.controls {
+    display: flex;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 15px;
 }
 
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
+.controls button {
+    min-width: 50px;
+    min-height: 42px;
+
+    padding: 8px 16px;
+
+    background: #171d24;
+    color: white;
+
+    border: 1px solid #303842;
     border-radius: 6px;
+
+    cursor: pointer;
+
+    font-size: 16px;
 }
 
-button:hover {
-    transform: scale(1.05);
+.controls button:hover {
+    background: #222a33;
+}
+
+#restartBtn {
+    font-size: 11px;
+    letter-spacing: 1px;
 }
 
 #gameMessage {
-    font-size: 22px;
+    margin: 18px 0 8px;
+
+    font-size: 14px;
     font-weight: bold;
+}
+
+.help {
+    margin: 0;
+
+    color: #6f7882;
+    font-size: 13px;
+}
+
+/* Pipeline */
+
+.pipeline {
+    margin-top: 45px;
+
+    padding-top: 30px;
+
+    border-top: 1px solid #252b33;
+}
+
+.pipeline h2 {
+    text-align: center;
+
+    margin: 0 0 25px;
+
+    color: #8b949e;
+
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+.steps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+.step {
+    min-width: 100px;
+
+    padding: 14px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 5px;
+
+    background: #10151b;
+
+    border: 1px solid #252b33;
+    border-radius: 7px;
+}
+
+.step .icon {
+    font-size: 18px;
+}
+
+.step strong {
+    font-size: 12px;
+}
+
+.step small {
+    color: #6f7882;
+
+    font-size: 10px;
+}
+
+.arrow {
+    color: #4d5661;
+}
+
+.live {
+    border-color: #3b7f55;
+}
+
+.deployment {
+    display: flex;
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-top: 25px;
+
+    color: #6f7882;
+
+    font-size: 11px;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .page {
+        width: 94%;
+        padding: 25px 0;
+    }
+
+    h1 {
+        font-size: 38px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .steps {
+        gap: 8px;
+    }
+
+    .arrow {
+        display: none;
+    }
+
+    .deployment {
+        flex-wrap: wrap;
+    }
 }

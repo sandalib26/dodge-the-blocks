@@ -1,31 +1,131 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dodge the Blocks</title>
+
+    <title>🎮Dodge the Blocks</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <div class="game-container">
-        <h1>🎮 Dodge the Blocks</h1>
+    <main class="page">
 
-        <div class="score-board">
-            Score: <span id="score">0</span>
-        </div>
+        <section class="hero">
 
-        <canvas id="gameCanvas" width="600" height="500"></canvas>
+            <h1>Dodge the Blocks</h1>
 
-        <p class="instructions">
-            Use <b>←</b> and <b>→</b> to move
-        </p>
+            <p class="subtitle">
+                Move left and right, dodge the falling blocks, beat your high score.
+            </p>
 
-        <button id="restartBtn">Restart Game</button>
+            <div class="scores">
 
-        <p id="gameMessage"></p>
-    </div>
+                <div>
+                    <span>SCORE</span>
+                    <strong id="score">00000</strong>
+                </div>
+
+                <div>
+                    <span>BEST</span>
+                    <strong id="bestScore">00000</strong>
+                </div>
+
+            </div>
+
+            <canvas
+                id="gameCanvas"
+                width="600"
+                height="500">
+            </canvas>
+
+            <div class="controls">
+
+                <button id="leftBtn">←</button>
+
+                <button id="restartBtn">
+                    RESTART
+                </button>
+
+                <button id="rightBtn">→</button>
+
+            </div>
+
+            <p id="gameMessage">
+                PRESS ← OR → TO START
+            </p>
+
+            <p class="help">
+                ← move left · → move right · tap buttons on mobile
+            </p>
+
+        </section>
+
+        <section class="pipeline">
+
+            <h2>HOW THIS PAGE GOT HERE</h2>
+
+            <div class="steps">
+
+                <div class="step">
+                    <span class="icon">⌨️</span>
+                    <strong>Code</strong>
+                    <small>Edit locally</small>
+                </div>
+
+                <div class="arrow">→</div>
+
+                <div class="step">
+                    <span class="icon">🐙</span>
+                    <strong>GitHub</strong>
+                    <small>git push</small>
+                </div>
+
+                <div class="arrow">→</div>
+
+                <div class="step">
+                    <span class="icon">⚙️</span>
+                    <strong>Actions</strong>
+                    <small>Validate</small>
+                </div>
+
+                <div class="arrow">→</div>
+
+                <div class="step">
+                    <span class="icon">▲</span>
+                    <strong>Vercel</strong>
+                    <small>Deploy to edge</small>
+                </div>
+
+                <div class="arrow">→</div>
+
+                <div class="step live">
+                    <span class="icon">●</span>
+                    <strong>Live</strong>
+                    <small>Seconds later</small>
+                </div>
+
+            </div>
+
+            <div class="deployment">
+                <span>Deployed by GitHub Actions</span>
+                <span>•</span>
+                <span>main</span>
+                <span>•</span>
+                <span>Vercel</span>
+            </div>
+
+        </section>
+
+    </main>
 
     <script src="game.js"></script>
+
 </body>
+
 </html>
+
