@@ -1,0 +1,38 @@
+name: Game CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check required files
+        run: |
+          test -f public/index.html
+          test -f public/style.css
+          test -f public/game.js
+
+      - name: Validate JavaScript
+        run: node --check public/game.js
+
+      - name: Validate HTML
+        run: |
+          grep -q "<html" public/index.html
+          grep -q "</html>" public/index.html
+
+      - name: Validate CSS
+        run: |
+          test -s public/style.css
+
+      - name: CI passed
+        run: echo "Game CI checks passed successfully!"
